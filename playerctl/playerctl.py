@@ -20,7 +20,9 @@ def list_players():
     """
     try:
         result = subprocess.run(["playerctl", "-l"], check=True, text=True, capture_output=True)
-        return result.stdout.strip().split("\n")
+        players = result.stdout.strip().split("\n")
+        players = ["[all]", "[active]"] + players  # Add special entries for all players and the active player
+        return players
     except subprocess.CalledProcessError as e:
         print(f"Error listing players: {e}")
         return []
@@ -52,7 +54,7 @@ def list_players_with_grouped_instances():
                 players.append(f"{base_name}.*")
 
 
-        print("Returning players: ", players)
+        players = ["[all]", "[active]"] + players  # Add special entries for all players and the active player
 
         return players
     except subprocess.CalledProcessError as e:
@@ -250,8 +252,12 @@ def _execute_playerctl_command(command, player_name=None):
                     args = ["playerctl", "--player", p] + command.split()
                     subprocess.run(args, check=True)
         else:
-            # Normal execution for a specific or global player
-            args = ["playerctl"] + (["--player", player_name or player] if player_name or player else []) + command.split()
+            if player_name and player_name == "[active]":
+                args = ["playerctl"] + command.split()
+            elif player_name and player_name == "[all]":
+                args = ["playerctl", "-"] + command.split()
+            else:
+                args = ["playerctl"] + (["--player", player_name or player] if player_name or player else []) + command.split()
             subprocess.run(args, check=True)
     except subprocess.CalledProcessError as e:
         print(f"Error executing command '{command}' for player '{player_name}': {e}")
