@@ -68,7 +68,7 @@ def mute_application(app_name, mute=True):
             return
     print(f"Application '{app_name}' not found.")
 
-def toggle_application_mute(app_name):
+def toggle_application_mute(button_velocity, button_name, app_name):
     """
     Toggle the mute state of a specific application.
     :param app_name: The name of the application.

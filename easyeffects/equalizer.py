@@ -3,7 +3,7 @@ from modules.easyeffects.dconf.dconf_utils import write
 # Shift faders right to multiply by 8 to access the next 8 faders in the EQ
 fader_shift = 0
 
-def decrement_fader_shift():
+def decrement_fader_shift(button_velocity, button_name):
     global fader_shift
     fader_shift -= 8
     if fader_shift < 0:
@@ -11,7 +11,7 @@ def decrement_fader_shift():
 
     print("Fader shift is now: ", fader_shift)
 
-def increment_fader_shift():
+def increment_fader_shift(button_velocity, button_name):
     global fader_shift
     fader_shift += 8
     print("Fader shift is now: ", fader_shift)

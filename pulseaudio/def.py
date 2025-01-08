@@ -1,4 +1,4 @@
-# List of function definitions for the EasyEffects plugin
+# List of function definitions for the pulseaudio plugin
 
 from modules.base import KnobFunction, FaderFunction, ButtonFunction, DynamicArgs
 from modules.pulseaudio.pulseaudio import list_applications, list_application_names, set_application_volume, change_application_volume, change_application_volume_fader, mute_application, toggle_application_mute
