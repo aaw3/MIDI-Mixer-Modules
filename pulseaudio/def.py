@@ -7,9 +7,9 @@ export = []
 
 
 # Toggle Mute Application
-toggleMuteApplication = ButtonFunction("Toggle Mute Application", "PulseAudio", toggle_application_mute, None, [DynamicArgs("Application Name", str, "", "The name of the application to mute", None, list_application_names())])
+toggleMuteApplication = ButtonFunction("Toggle Mute Application", "PulseAudio", toggle_application_mute, None, [DynamicArgs("Application Name", str, "", "The name of the application to mute", None, list_application_names)])
 export.append(toggleMuteApplication)
 
 # Application Volume
-applicationVolume = FaderFunction("Application Volume", "PulseAudio", False, 50, change_application_volume_fader, [DynamicArgs("Application Name", str, "", "The name of the application to adjust", None, list_application_names())])
+applicationVolume = FaderFunction("Application Volume", "PulseAudio", False, 50, change_application_volume_fader, [DynamicArgs("Application Name", str, "", "The name of the application to adjust", None, list_application_names)])
 export.append(applicationVolume)
