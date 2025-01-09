@@ -7,7 +7,7 @@ export = []
 
 
 # Play/Pause
-togglePlayback = ButtonFunction("Toggle Playback", "Playerctl", button_play_pause, None, [DynamicArgs("Player Name", str, "", "The name of the player to toggle playback", None, list_players_with_grouped_instances())])
+togglePlayback = ButtonFunction("Toggle Playback", "Playerctl", button_play_pause, None, [DynamicArgs("Player Name", str, "", "The name of the player to toggle playback", None, list_players_with_grouped_instances)])
 export.append(togglePlayback)
 
 # Play
