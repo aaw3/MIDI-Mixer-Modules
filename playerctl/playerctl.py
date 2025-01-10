@@ -255,7 +255,7 @@ def _execute_playerctl_command(command, player_name=None):
             if player_name and player_name == "[active]":
                 args = ["playerctl"] + command.split()
             elif player_name and player_name == "[all]":
-                args = ["playerctl", "-"] + command.split()
+                args = ["playerctl", "-a"] + command.split()
             else:
                 args = ["playerctl"] + (["--player", player_name or player] if player_name or player else []) + command.split()
             subprocess.run(args, check=True)
